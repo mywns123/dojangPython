@@ -2,12 +2,12 @@ import pickle as pi
 
 
 def ViewHeadLine():
-    print("-----------------------------------------------------------------")
-    print('|     이름     |           주소           |          나이         |')
+    print(" --------------------------------------------------------------- ")
+    print("|     이름     |       주소       |      나이     |    전화번호    |")
 
 
 def ViewFootLine():
-    print("-----------------------------------------------------------------")
+    print(" --------------------------------------------------------------- ")
 
 
 def view(student):
@@ -15,11 +15,10 @@ def view(student):
     for key, value in student.items():
         print("|", f'{key:^9}', "|", end=' ')
         for data in value:
-            print(f'{data:^22}', end='|')
+            print(f'{data:^14}', end='|')
         print()
     ViewFootLine()
     return student
-
 
 
 def insert(student):
@@ -27,12 +26,14 @@ def insert(student):
     if name not in student:
         address = input("주소를 입력하세요 >>> ")
         age = int(input("나이를 입력하세요 >>> "))
+        hp = input("'-'제외한 전화번호를 입력하세요 >>> ")
+        hp = hp[0:3] + "-" + hp[3:7] + "-" + hp[7:]
         print("주소 정보가 입력되었습니다.")
     else:
         print("학생이 존재합니다.")
         return insert(student)
 
-    student[name] = [address, age]
+    student[name] = [address, age, hp]
     person = student[name]
     view(student)
     return student
@@ -43,8 +44,10 @@ def update(student):
     if name in student:
         address = input("주소를 입력하세요 >>> ")
         age = int(input("나이를 입력하세요 >>> "))
+        hp = input("'-'제회한 전화번호를 입력하세요 >>> ")
+        hp = hp[0:3] + "-" + hp[3:7] + "-" + hp[7:]
         print("주소 정보가 입력되었습니다.")
-        student[name] = [address, age]
+        student[name] = [address, age, hp]
         person = student[name]
     else:
         print("해당 이름이 없습니다.")
@@ -70,9 +73,9 @@ def search(student):
     name = input("검색 할 친구의 이름을 입력하세요. >>> ")
     if name in student:
         ViewHeadLine()
-        print('|', f'{name:^10}', end='|')
+        print('|', f'{name:^9}', end='|')
         for data in student.get(name):
-            print(f'{data:^22}', end='|')
+            print(f'{data:^14}', end='|')
         print()
         ViewFootLine()
     else:

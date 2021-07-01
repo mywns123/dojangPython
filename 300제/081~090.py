@@ -1,0 +1,16 @@
+print("# 81번문제")
+print("# 82번문제")
+print("# 83번문제")
+print("# 84번문제")
+print("# 85번문제")
+temp = {1}
+print(type(temp))
+temp = {}
+print(type(temp))
+temp = dict()
+print(type(temp))
+print("# 86번문제")
+print("# 87번문제")
+print("# 88번문제")
+print("# 89번문제")
+print("# 90번문제")
