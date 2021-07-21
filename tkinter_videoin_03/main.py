@@ -1,5 +1,6 @@
 import tkinter
 from tkCamera import tkCamera
+import cv2
 
 
 class App:
@@ -12,7 +13,7 @@ class App:
         columns = 2
         for number, source in enumerate(video_sources):
             text, stream = source
-            vid = tkCamera(self.window, text, stream, 400, 300)
+            vid = tkCamera(self.window, text, stream, 400, 300, 1)
             x = number % columns
             y = number // columns
             vid.grid(row=y, column=x)
@@ -32,9 +33,10 @@ class App:
 if __name__ == '__main__':
     sources = [
         ('me', 0),
+        # ('histogram', "images/hue_hist.jpg", cv2.IMREAD_COLOR),
         ('Zakopane, Poland', 'https://imageserver.webcamera.pl/rec/krupowki-srodek/latest.mp4'),
         ('Kraków, Poland', 'https://imageserver.webcamera.pl/rec/krakow4/latest.mp4'),
-        ('Warszawa, Poland', 'https://imageserver.webcamera.pl/rec/warszawa/latest.mp4'),
+        # ('Warszawa, Poland', 'https://imageserver.webcamera.pl/rec/warszawa/latest.mp4'),
         # ('Baltic See, Poland', 'https://imageserver.webcamera.pl/rec/chlopy/latest.mp4'),
         # ('Mountains, Poland', 'https://imageserver.webcamera.pl/rec/skolnity/latest.mp4'),
     ]

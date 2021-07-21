@@ -6,12 +6,12 @@ from MyVideoCapture import *
 
 
 class tkCamera(tkinter.Frame):
-    def __init__(self, window, text="", video_source=0, width=None, height=None):
+    def __init__(self, window, text="", video_source=0, width=None, height=None, repeat=0):
         super().__init__(window)
         self.window = window
-
+        self.repeat = repeat
         self.video_source = video_source
-        self.vid = MyVideoCapture(self.video_source, width, height)
+        self.vid = MyVideoCapture(text, self.video_source, width, height)
 
         self.label = tkinter.Label(self, text=text)
         self.label.pack()
@@ -53,8 +53,10 @@ class tkCamera(tkinter.Frame):
 
     def update_frame(self):
         ret, frame = self.vid.get_frame()
-
         if ret:
+            # frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
+            # frame = cv2.Laplacian(frame, cv2.CV_16S, 1)
+
             self.image = PIL.Image.fromarray(frame)
             self.photo = PIL.ImageTk.PhotoImage(image=self.image)
             self.canvas.create_image(0, 0, image=self.photo, anchor=tkinter.NW)
