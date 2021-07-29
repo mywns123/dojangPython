@@ -3,12 +3,17 @@ from Common.utils import ck_time
 
 def accumulate(image, rho, theta):
     h, w = image.shape[:2]
-    rows, cols = (h + w) * 2 // rho, int( np.pi/theta)  # 누적행렬 너비, 높이
+    rows, cols = (h + w) * 2 // rho, int(np.pi/theta)  # 누적행렬 너비, 높이
+    print(rho)
+    print((h + w) * 2 // rho)
+    print(int(np.pi/theta))
     accumulate = np.zeros((rows, cols), np.int32)    # 직선 누적행렬
 
     sin_cos = [(np.sin(t * theta), np.cos(t * theta)) for t in range(cols)]  # 삼각 함수값 미리 저장
+    # print("!1", np.sin(3 * theta))
+    # print("!2",(3 *np.sin( theta)))
     # pts = [(y, x) for x in range(w) for y in range(h) if image[y, x] > 0 ]
-    pts = np.where(image > 0)
+    pts = np.where(image > 0)  # 인데스 값 반환
 
     polars = np.dot(sin_cos, pts).T            # 행렬곱으로 허프 변환 수식 계산
     polars = (polars/ rho + rows / 2)           # 해상도 변경 및 위치 조정
