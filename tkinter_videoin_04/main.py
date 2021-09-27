@@ -31,8 +31,14 @@ class App:
 
 
 if __name__ == '__main__':
+    a = 0
     sources = [
-        ('me', 0),
+        ('me', a),
+        ('me', a),
+        ('me', a),
+        ('me', a),
+        ('me', a),
+        ('me', a),
         # ('Zakopane, Poland', 'https://imageserver.webcamera.pl/rec/krupowki-srodek/latest.mp4'),
         # ('Kraków, Poland', 'https://imageserver.webcamera.pl/rec/krakow4/latest.mp4'),
         # ('Warszawa, Poland', 'https://imageserver.webcamera.pl/rec/warszawa/latest.mp4'),
